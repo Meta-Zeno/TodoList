@@ -7,7 +7,7 @@ function App() {
 
   const addItem = () => {
     if (inputValue.trim() !== "") {
-      setItems([...items, inputValue]);
+      setItems([...items, { text: inputValue, done: false }]);
       setInputValue("");
     }
   };
@@ -15,6 +15,12 @@ function App() {
   const removeItem = (index) => {
     const updatedItems = [...items];
     updatedItems.splice(index, 1);
+    setItems(updatedItems);
+  };
+
+  const toggleDone = (index) => {
+    const updatedItems = [...items];
+    updatedItems[index].done = !updatedItems[index].done;
     setItems(updatedItems);
   };
 
@@ -31,7 +37,16 @@ function App() {
         <ul>
           {items.map((item, index) => (
             <li key={index}>
-              {item}
+              <input
+                type="checkbox"
+                checked={item.done}
+                onChange={() => toggleDone(index)}
+              />
+              <span
+                style={{ textDecoration: item.done ? "line-through" : "none" }}
+              >
+                {item.text}
+              </span>
               <button onClick={() => removeItem(index)}>Remove</button>
             </li>
           ))}
