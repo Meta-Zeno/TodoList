@@ -25,19 +25,23 @@ function App() {
   };
 
   return (
-    <>
-      <div>
-        <input
+    <>  
+    
+      <div className="container">
+        <div className="inputWrap">
+        <input className="typeBox"
           type="text"
           value={inputValue}
           placeholder="Type here"
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <button onClick={addItem}>+</button>
+        <button className="addItem" onClick={addItem}>+</button>
+        </div>
         <ul>
+        
           {items.map((item, index) => (
             <li key={index}>
-              <input
+              <input className="checkBox"
                 type="checkbox"
                 checked={item.done}
                 onChange={() => toggleDone(index)}
@@ -47,7 +51,7 @@ function App() {
               >
                 {item.text}
               </span>
-              <button onClick={() => removeItem(index)}>Remove</button>
+              <button className="removeItem" onClick={() => removeItem(index)}>Remove</button>
             </li>
           ))}
         </ul>
