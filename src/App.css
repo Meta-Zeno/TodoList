@@ -21,4 +21,16 @@ font-size: large;
   
 }
 
+span {
+    color: white;
+    font-weight: bolder;
+    font-size: 80px;
+}
+
+
+.typeBox {
+    height: 60px;
+    width: auto;
+    font-size: medium
+}
 
